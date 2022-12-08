@@ -16,4 +16,4 @@ replicas:
   count: 2
 images:
 - name: nikawang.azurecr.io/func/java-sample
-    newTag: "104"
+  newTag: "105"
