@@ -6,6 +6,6 @@
     "path": "/metadata/name",
     "value": "telemtryehns-stg"},
   {"op": "replace",
-    "path": "/spec/owner",
+    "path": "/spec/owner/name",
     "value": "functions-stg"}
 ]
