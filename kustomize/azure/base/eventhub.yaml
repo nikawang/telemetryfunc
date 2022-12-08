@@ -23,13 +23,13 @@ spec:
   partitionCount: 1
 ---
 apiVersion: eventhub.azure.com/v1beta20211101
-kind: NamespacesAuthorizationRule
+kind: NamespacesEventhubsAuthorizationRule
 metadata:
   name: functions-authrule
   namespace: functions
 spec:
   owner:
-    name: telemtryehns
+    name: telemtryeh
   rights:
     - Listen
     - Send

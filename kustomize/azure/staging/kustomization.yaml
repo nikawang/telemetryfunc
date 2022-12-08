@@ -32,7 +32,7 @@ patches:
     version: v1beta20211101
 - path: eh-auth-patch.json
   target:
-    kind: NamespacesAuthorizationRule
+    kind: NamespacesEventhubsAuthorizationRule
     group: eventhub.azure.com
     version: v1beta20211101
 
