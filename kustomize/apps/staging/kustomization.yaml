@@ -1,19 +1,19 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 bases:
-  - ../base
+- ../base
 
 generatorOptions:
   disableNameSuffixHash: true
 
 secretGenerator:
-  - name: azfunc-secret
-    envs:
-      - access.env
+- name: azfunc-secret
+  envs:
+    - access.env
 
 replicas:
-  - name: azfunc-test
-    count: 2
+- name: azfunc-test
+  count: 2
 images:
-  - name: nikawang.azurecr.io/func/java-sample
-    newTag: 103
+- name: nikawang.azurecr.io/func/java-sample
+  newTag: "103"
