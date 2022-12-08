@@ -17,4 +17,3 @@ replicas:
 images:
 - name: nikawang.azurecr.io/func/java-sample
   newTag: v3
-
