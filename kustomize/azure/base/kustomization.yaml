@@ -3,4 +3,5 @@ kind: Kustomization
 resources:
   - resourcegroup.yaml
   - cosmosdb.yaml
+  - storage.yaml
   - eventhub.yaml

@@ -35,4 +35,8 @@ patches:
     kind: NamespacesEventhubsAuthorizationRule
     group: eventhub.azure.com
     version: v1beta20211101
-
+- path: storage-patch.json
+  target:
+    kind: StorageAccount
+    group: storage.azure.com
+    version: v1beta20210401

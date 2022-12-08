@@ -1,0 +1,17 @@
+[
+  {"op": "replace",
+    "path": "/metadata/namespace",
+    "value": "functions-stg"},
+  {"op": "replace",
+     "path": "/metadata/name",
+     "value": "telemtrystroagestg"},
+  {"op": "replace",
+    "path": "/spec/owner/name",
+    "value": "functions-stg"},
+    {"op": "replace",
+    "path": "/spec/operatorSpec/secrets/key1/name",
+    "value": "db-secret-stg"},
+    {"op": "replace",
+    "path": "/spec/operatorSpec/secrets/blobEndpoint/name",
+    "value": "db-secret-stg"}
+]
