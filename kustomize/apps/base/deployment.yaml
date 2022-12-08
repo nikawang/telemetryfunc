@@ -19,11 +19,6 @@ spec:
         - name: azfunc-test
           image: nikawang.azurecr.io/func/java-sample
           env:
-            - name: AzureWebJobsStorage
-              valueFrom:
-                secretKeyRef:
-                  name: azfunc-secret
-                  key: AzureWebJobsStorage
             - name: EventHubConnectionString
               valueFrom:
                 secretKeyRef:

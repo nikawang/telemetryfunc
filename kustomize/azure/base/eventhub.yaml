@@ -1,0 +1,35 @@
+apiVersion: eventhub.azure.com/v1beta20211101
+kind: Namespace
+metadata:
+  name: telemtryehns
+  namespace: functions
+spec:
+  location: japaneast
+  owner:
+    name: func-sample
+  sku:
+    name: Standard
+    tier: Standard
+---
+apiVersion: eventhub.azure.com/v1beta20211101
+kind: NamespacesEventhub
+metadata:
+  name: telemtryeh
+  namespace: functions
+spec:
+  owner:
+    name: telemtryehns
+  messageRetentionInDays: 7
+  partitionCount: 1
+---
+apiVersion: eventhub.azure.com/v1beta20211101
+kind: NamespacesAuthorizationRule
+metadata:
+  name: functions-authrule
+  namespace: functions
+spec:
+  owner:
+    name: telemtryehns
+  rights:
+    - Listen
+    - Send

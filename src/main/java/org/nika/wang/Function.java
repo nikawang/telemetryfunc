@@ -109,19 +109,6 @@ public class Function {
         } else {
             item.setTemperatureStatus(status.WARM);
         }
-
-        try {
-            /* ... */
-          } catch (Exception e) {   // Noncompliant - exception is lost
-            context.getLogger().info("context");
-          }
-          
-          try {
-            /* ... */
-          } catch (Exception e) {  // Noncompliant - exception is lost (only message is preserved)
-            context.getLogger().info(e.getMessage());
-          }
-
         document.setValue(item);
     }
 }

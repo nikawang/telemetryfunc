@@ -17,11 +17,6 @@ spec:
     spec:
       containers:
       - env:
-        - name: AzureWebJobsStorage
-          valueFrom:
-            secretKeyRef:
-              key: AzureWebJobsStorage
-              name: azfunc-secret
         - name: EventHubConnectionString
           valueFrom:
             secretKeyRef:

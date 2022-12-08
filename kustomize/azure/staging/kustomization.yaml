@@ -1,0 +1,38 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+bases:
+- ../base
+
+patches:
+- path: k8s-ns-patch.json
+  target:
+    kind: Namespace
+    version: v1
+- path: rg-patch.json
+  target:
+    kind: ResourceGroup
+- path: account-patch.json
+  target:
+    kind: DatabaseAccount
+- path: db-patch.json
+  target:
+    kind: SqlDatabase
+- path: collection-patch.json
+  target:
+    kind: SqlDatabaseContainer
+- path: eh-ns-patch.json
+  target:
+    kind: Namespace
+    group: eventhub.azure.com
+    version: v1beta20211101
+- path: eh-patch.json
+  target:
+    kind: NamespacesEventhub
+    group: eventhub.azure.com
+    version: v1beta20211101
+- path: eh-auth-patch.json
+  target:
+    kind: NamespacesAuthorizationRule
+    group: eventhub.azure.com
+    version: v1beta20211101
+

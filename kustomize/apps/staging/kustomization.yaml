@@ -3,9 +3,18 @@ kind: Kustomization
 bases:
 - ../base
 
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: azfunc-secret
+    envs:
+      - access.env
+
 replicas: 
 - name: azfunc-test
   count: 2
 images:
 - name: nikawang.azurecr.io/func/java-sample
   newTag: v3
+

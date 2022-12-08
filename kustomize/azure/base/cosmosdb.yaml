@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: functions
+---
+apiVersion: documentdb.azure.com/v1beta20210515
+kind: DatabaseAccount
+metadata:
+  name: telemetrydb-account
+  namespace: functions
+spec:
+  location: japaneast
+  owner:
+    name: func-sample
+  kind: GlobalDocumentDB
+  databaseAccountOfferType: Standard
+  locations:
+    - locationName: japaneast
+  operatorSpec:
+    secrets:
+      primaryMasterKey:
+        name: db-secret
+        key: primarymasterkey
+      documentEndpoint:
+        name: db-secret
+        key: endpoint
+---
+apiVersion: documentdb.azure.com/v1beta20210515
+kind: SqlDatabase
+metadata:
+  name: telemetrydb
+  namespace: functions
+spec:
+  location: japaneast
+  owner:
+    name: telemetrydb-account
+  resource:
+    id: telemetrydb
+  options:
+    autoscaleSettings:
+      maxThroughput: 1000
+---
+apiVersion: documentdb.azure.com/v1beta20210515
+kind: SqlDatabaseContainer
+metadata:
+  name: telemetryinfo
+  namespace: functions
+spec:
+  location: japaneast
+  owner:
+    name: telemetrydb
+  options:
+    throughput: 400
+  resource:
+    id: telemetryinfo
+    defaultTtl: 200
+    partitionKey:
+      kind: Hash
+      paths:
+      - "/temperatureStatus"
