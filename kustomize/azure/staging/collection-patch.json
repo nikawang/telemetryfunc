@@ -4,11 +4,11 @@
     "value": "functions-stg"},
   {"op": "replace",
    "path": "/metadata/name",
-   "value": "telemetrystginfo"},
+   "value": "telemetryinfo"},
   {"op": "replace",
    "path": "/spec/owner/name",
-   "value": "telemetrystgdb"},
+   "value": "telemetrydb"},
   {"op": "replace",
    "path": "/spec/resource/id",
-   "value": "telemetrystginfo"}
+   "value": "telemetryinfo"}
 ]
