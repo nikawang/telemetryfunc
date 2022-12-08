@@ -4,7 +4,7 @@
     "value": "functions-stg"},
   {"op": "replace",
     "path": "/spec/owner/name",
-    "value": "telemtryeh-stg"},
+    "value": "telemtryehns-stg"},
   {"op": "replace",
     "path": "/metadata/name",
     "value": "telemtryehauth-stg"}
