@@ -1,0 +1,29 @@
+# File: .github/workflows/workflow.yml
+name: azure policy
+on: 
+  push:
+    branches:
+      - main
+    paths:
+      - mainifests/policy/**
+
+
+jobs:
+  apply-azure-policy:    
+    runs-on: ubuntu-latest
+    steps:
+    # Azure Login       
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.AZURE_CREDENTIALS}}
+
+    - name: Checkout
+      uses: actions/checkout@v2 
+
+    - name: Create or Update Azure Policies
+      uses: azure/manage-azure-policy@v0
+      with:      
+        paths:  |                  
+          policies/**
+        
