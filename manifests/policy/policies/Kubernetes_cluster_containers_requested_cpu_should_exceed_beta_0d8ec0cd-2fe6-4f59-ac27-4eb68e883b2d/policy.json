@@ -1,0 +1,101 @@
+{
+ "properties": {
+  "displayName": "Kubernetes cluster containers requested cpu should exceed beta",
+  "policyType": "Custom",
+  "mode": "Microsoft.Kubernetes.Data",
+  "metadata": {
+   "category": "Kubernetes",
+   "createdBy": "d1f49406-c6f1-4209-9bce-bdbc5e10f708",
+   "createdOn": "2022-08-25T05:53:01.4417058Z",
+   "updatedBy": "d1f49406-c6f1-4209-9bce-bdbc5e10f708",
+   "updatedOn": "2022-08-26T02:17:57.9713487Z"
+  },
+  "parameters": {
+   "effect": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Effect",
+     "description": "'Audit' allows a non-compliant resource to be created, but flags it as non-compliant. 'Deny' blocks the resource creation. 'Disable' turns off the policy."
+    },
+    "allowedValues": [
+     "audit",
+     "Audit",
+     "deny",
+     "Deny",
+     "disabled",
+     "Disabled"
+    ],
+    "defaultValue": "Deny"
+   },
+   "namespaces": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Namespace inclusions",
+     "description": "List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces."
+    },
+    "defaultValue": []
+   },
+   "excludedNamespaces": {
+    "type": "Array",
+    "metadata": {
+     "displayName": "Namespace exclusions",
+     "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
+    },
+    "defaultValue": [
+     "kube-system",
+     "gatekeeper-system",
+     "azure-arc"
+    ]
+   },
+   "labelSelector": {
+    "type": "Object",
+    "metadata": {
+     "displayName": "Kubernetes label selector",
+     "description": "Label query to select Kubernetes resources for policy evaluation. An empty label selector matches all Kubernetes resources."
+    },
+    "defaultValue": {}
+   },
+   "CPU": {
+    "type": "String",
+    "metadata": {
+     "displayName": "Not exceed the value",
+     "description": "Not exceed the value in container requested cpu"
+    }
+   }
+  },
+  "policyRule": {
+   "if": {
+    "field": "type",
+    "in": [
+     "AKS Engine",
+     "Microsoft.Kubernetes/connectedClusters",
+     "Microsoft.ContainerService/managedClusters"
+    ]
+   },
+   "then": {
+    "effect": "[parameters('effect')]",
+    "details": {
+     "templateInfo": {
+      "sourceType": "PublicURL",
+      "url": "https://raw.githubusercontent.com/nikawang/azure-policy/master/samples/KubernetesService/containerresourcenotexceed/template.yaml"
+     },
+     "apiGroups": [
+      ""
+     ],
+     "kinds": [
+      "Pod"
+     ],
+     "excludedNamespaces": "[parameters('excludedNamespaces')]",
+     "namespaces": "[parameters('namespaces')]",
+     "labelSelector": "[parameters('labelSelector')]",
+     "values": {
+      "CPU": "[parameters('CPU')]"
+     }
+    }
+   }
+  }
+ },
+ "id": "/subscriptions/77bbb887-5daa-4b0b-acf6-46f07353c2cf/providers/Microsoft.Authorization/policyDefinitions/0d8ec0cd-2fe6-4f59-ac27-4eb68e883b2d",
+ "type": "Microsoft.Authorization/policyDefinitions",
+ "name": "0d8ec0cd-2fe6-4f59-ac27-4eb68e883b2d"
+}
