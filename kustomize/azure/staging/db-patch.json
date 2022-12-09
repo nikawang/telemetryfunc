@@ -10,5 +10,5 @@
    "value": "telemetrystgdb"},
    {"op": "replace",
    "path": "/spec/resource/id",
-   "value": "telemetrystg"}
+   "value": "telemetrydb"}
 ]

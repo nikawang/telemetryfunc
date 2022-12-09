@@ -16,7 +16,7 @@ secretGenerator:
 namespace: functions-stg
 replicas:
 - name: azfunc-test
-  count: 2
+  count: 1
 images:
 - name: nikawang.azurecr.io/func/java-sample
   newTag: "113"
