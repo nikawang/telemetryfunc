@@ -88,8 +88,8 @@ public class Function {
                     TelemetryItem item,
             @CosmosDBOutput(
                     name = "databaseOutput",
-                    databaseName = "TelemetryDb",
-                    collectionName = "TelemetryInfo",
+                    databaseName = "telemetrydb",
+                    collectionName = "telemetryinfo",
                     connectionStringSetting = "CosmosDBConnectionString")
                     OutputBinding<TelemetryItem> document,
             final ExecutionContext context) {
